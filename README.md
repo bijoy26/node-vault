@@ -1,4 +1,4 @@
-## NODE-VALUT
+## NODE-VAULT
 
 ### A simple vault containing the fun stuffs related to nodeJS and JavaScript concepts
 
