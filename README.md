@@ -10,4 +10,4 @@
 
 ## Resources
 
-- NodeJS Series by @learnwithsumit - [YouTube Playlist](https://www.youtube.com/watch?v=WC-g0JtEIwM&list=PLHiZ4m8vCp9PHnOIT7gd30PCBoYCpGoQM) and [Repo](https://github.com/learnwithsumit/nodejs-basic-bangla)
+- NodeJS Series by [@learnwithsumit](https://github.com/learnwithsumit) - [YouTube Playlist](https://www.youtube.com/watch?v=WC-g0JtEIwM&list=PLHiZ4m8vCp9PHnOIT7gd30PCBoYCpGoQM) and [Repo](https://github.com/learnwithsumit/nodejs-basic-bangla)
