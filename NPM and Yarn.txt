@@ -1,0 +1,41 @@
+NPM 
+
+provides external library for application development
+NPM registry contains millions of package.
+Ex- lodash is a library in NPM registry which provides utility and modularity.
+Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc
+
+	PHP Package manager - Composer
+	Java Package manager - Maven
+	Python Package manager - PIP
+	Node Package Manager - NPM
+
+npm install <package-name>
+
+NPM Drawbacks
+- There can be malicious packages causing security issue
+- Packages can have vulnerabilities
+- Globally accessible by anyone
+
+Addressing NPM's drawbacks, facebook has developed 'Yarn' package manager based on NPM.
+Yarn is smooth, high efficient, developer friendly and more secure than NPM.
+
+Under the hood, yarn uses the same NPM packages but maintains them themselves.
+
+To install Yarn in windows - 
+	$> npm install yarn
+	$> yarn set version latest
+
+Install a new package using Yarn -
+	$> yarn add react
+
+Recommended VS Code Extensions-
+	1. AirBnB Guideline - Developed by AirBnB, this extension makes sure that JS code is following certain rules (used in React internally) and best practises.		
+	2. ESLint - Most popular JS Linter that finds and fixes problem in JS code.
+	3  Prettier - Code formatter that formats and aligns the code.
+
+NOTE: ESLint and Prettier follow different standards and it's likely to have conflicting rules between them.For such case, one of their rules need to be disabled.
+
+How to set up Extensions and configure VS Code optimally for smooth developer experience - https://github.com/learnwithsumit/nodejs-basic-bangla#vs-code-editor-setup
+ESLint configuration in detail - https://eslint.org/docs/user-guide/configuring 
+

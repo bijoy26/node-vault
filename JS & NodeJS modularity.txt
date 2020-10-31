@@ -1,0 +1,93 @@
+Global Object
+Browser's javascript Window object is not available in nodeJS. 
+NodeJS has similar functionalities as browser windows object, that is under its Global object.
+
+
+Javascript Modular System 
+
+JavaScript does not have any modular system by default. (Vanilla JS ES5)
+
+When a variable is declared in Browser console, it gets attached with Windows object and can be accessed by window.<VAR-NAME>.
+But in Node, a declared variable DOES NOT get attached to Global object.
+
+On client side, loading multiple script files on a html index file makes their internal 'var' declated variables shareable as they are not modular.
+'var' is function scoped and thus sharable globally. This could lead to unexpected bugs.
+
+To address this issue, script files in nodeJS are made modular and encapsulated, so the data stays inside a script.
+
+Modular System in nodeJS has allowed individual files to be modular and self-contained.
+Each script files here are referred to as modules.
+
+Each module can decide which of it's resources it wishes to export to other modules by explicitly mentioning those via module.export.
+
+require() is equivalent to importing files.
+Each module (script) has it's own 'module' object which contains necessary info (filenamne, directory, export object, children modules).
+When a module imports another module using require, what it gets in return (object/something else) is explicitly specified on that module.
+
+NOTE : By default, a module returns a blank object (export) if there is not module.export is mentioned. 
+
+
+
+
+Module Wrapper Function
+
+Previously, to achieve File modularity in Javascript (vanilla js ES5), IIFE was used. (Singleton Pattern)
+IIFE is a function which calls itself.
+Data inside IIFE function is not accessible out of this function as var is function scoped.
+
+		(function (){
+			var a = 15;
+		}){}
+
+So anything written inside IIFE will be encapsulated.
+
+With this concept, NodeJS is built in such a way that the entire script content is automatically wrapped by a similar IIFE function.
+This by default, each of the script achieves modularity and becomes modules.
+
+In short, nodeJS invisibly handles Module Wrapper Function.
+This function passes certain parameters, thus making those available and accessible inside the script.
+
+		(function (exports, require, module, _filename, _dirname){
+			// script
+		}){}
+
+When a require() function is called in a module, it calls the Module Wrapper Function of the specified module, which in turn returns the module.exports object.
+
+
+
+
+ECMAScript vs JavaScript
+
+ECMAScript is a standard for scripting languages and JavaScript is an implementation of ECMAScript. 
+The acronym ES refers to ECMAScript. ECMA stands for European Computer Manufacturer’s Association.
+ES and JavaScript are virtually one in the same except that JavaScript may provide some additional features.
+
+JavaScript's earlier version such as ES5 contained many limitations that prohibited creating classes, importing modules, etc.
+The first standardized version of JavaScript was referred to as Vanilla ES5.
+The newest version today is referred to as ES6/ECMAScript 2015/ES2015.
+
+All modern browsers support ES5, it is the backbone of the modern web.
+The caveat is, ES5 doesn’t support modules. So, developers have come up with a lot of module patterns to support modularity-
+	1. Singleton Pattern
+	2. Constructor Pattern
+
+Singleton Pattern: 
+The singleton pattern takes advantage of what we called IIFE (immediately invoked function expressions).
+As  JavaScript has function level scope so all variables and functions declared within the function expression 
+are not available in the global scope.
+
+NOTE: This is explained above on Module Wrapper Function.
+
+IIFE is a function which calls itself.
+Data inside IIFE function is not accessible out of this function as var is function scoped.
+
+		(function (){
+			var a = 15;
+		}){}
+
+So anything written inside IIFE will be encapsulated.
+
+NodeJS is based on 3 type of modules -
+    1. NodeJS provided packages (ex- crypto and http)
+    2. Packages imported from NPM Registry  (ex- lodash)
+    3. Custom written modules by programmer.

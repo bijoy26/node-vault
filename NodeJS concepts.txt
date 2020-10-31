@@ -1,0 +1,78 @@
+Javascript is a programming language that allows dynamic functionalities in a webpage browser.
+
+NodeJS - A javascript runtime built on Chrome's V8 Engine
+
+NodeJS is not a programming language.
+
+
+
+Runtime:
+The runtime environment/ runtime system is a composite mechanism designed to provide program execution services.
+
+A program, for being able to execute, requires runtime environment. 
+As soon as a software program is executed, it is in a runtime state. 
+
+In this state, the program can send instructions to the computer's processor and access the computer's memory (RAM) and other system resources.
+Runtime environment provides following services to the program/process :-
+
+	Resident Memory
+	Resources such as File, Sockets, etc.
+	Environment variables
+	Proper initialization
+	Proper disposal/Garbage Collection
+
+Software development programs often include an RTE component that allows the programmer to run the program in an environment he can track the instructions 
+being processed by the program and debug any errors that may arise.
+
+
+In javascript, nodeJS runtime takes the content of the source files and executes them via the engine.
+Javascript Engine is responsible for executing javascript code, which is done inside browser.
+
+DOM is like a huge JS object containing the entire loaded web page elements.
+
+JS Engine can access the DOM and Windows object while executing JS code, thus manipulating those.
+
+	Firefox JS Engine - SpiderMonkey
+	Google Chrome JS Engine - V8 (most powerful)
+	Internet Explorer - Chakra
+	Safari JS Engine - Javascript Core
+
+Chrome V8 Engine is written in C++.
+
+Ryan Dull took the V8 engine out of the browser, added more C++ codes for (OS permission, File system, network, memory resource) and
+created open source project - NodeJS runtime.
+
+NOTE: NodeJS runs on OS context, so a server running nodeJS can access any OS resources.
+
+
+	1. CPU Intensive Task - Mathematical operation which is run on server's own CPU and does not rely on other DB or servers.
+	2. I/O Intensive Task - Data I/O tasks which relies on DB / File System / other Servers.
+
+
+MULTI THREADING VS SINGLE THREADING
+
+Java uses multi-threading (parallel processing at the same time) for handling  which is implemented on its own Tomcat server.
+Tomcat has max 200 threads by default. When client makes a request, Tomcat assigns a thread for it.
+
+But Javascript is a single threaded language, so nodeJS uses a different mechanism for mutiple request handling.
+When client makes a request to NodeJS server, it handles the request by sending it to the expected destination but DOES NOT WAIT FOR ITS RESPONSE.
+
+NodeJS has two concepts- 
+	
+	1. Asynchronous - After getting response, worker process would invoke a CALLBACK Function to send the event/notification(Event based architecture).
+			  As no sequence is maintained while processing the tasks, it is called asynchronous.
+
+	2. Non-blocking I/O - Single thread would forward the incoming I/O intensive request to other worker process, but server i.e. thread won't be 
+			      blocked for other incoming requests at the same time. (but would get blocked for high CPU intensive tasks)
+
+NOTE: NodeJS should not be used for Big Data processing, Image Processing, Batch Processing etc as those are high CPU intensive tasks.
+
+Event Loop: Single threaded loop that manages everything including task queue, thread pool management etc.
+	    Can be visualized as an infinite while loop that waits for new tasks, assign them and manage the tasks.
+
+Multiple request handling is possible in nodeJS for Event Loop.
+
+NOTE: NodeJS 10.5 has introduced multithreading concept, where programmer can create new threads using worker-thread model in nodeJS.
+
+NodeJS uses "libuv" (cross platform asynchronous library that allows the feature of non blocking I/O using OS kernel), thus it uses system kernel's multithreading 
+under the hood to do its job.
