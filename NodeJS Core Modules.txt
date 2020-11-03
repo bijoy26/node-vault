@@ -1,0 +1,18 @@
+Node has built in core modules which can be used to built any enterprise application without any external NPM modules.
+
+Official Documentation for core modules of NodeJS v14 latest - https://nodejs.org/dist/latest-v14.x/docs/api/
+Node.js Built-in Modules by w3schools - https://www.w3schools.com/nodejs/ref_modules.asp  
+
+
+Path Module
+- Provides path related info such as relative/absolute path and directory.
+
+some functions 
+    - path.basename(myPath)); // returns basename of path (filename at the end)
+    - path.dirname(myPath)); // directoryname of the file
+    - path.extname(myPath)); // extension of the file
+    - path.parse(myPath)); // returns object containing all path info
+
+
+
+OS Module
