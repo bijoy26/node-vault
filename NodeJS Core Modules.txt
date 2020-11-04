@@ -5,7 +5,10 @@ Node.js Built-in Modules by w3schools - https://www.w3schools.com/nodejs/ref_mod
 
 
 Path Module
-- Provides path related info such as relative/absolute path and directory.
+- provides utilities for working with file and directory paths
+- path module varies based on the OS on which the Node.js application is running
+- using path.basename() might yield different results on POSIX and Windows.
+
 
 some functions 
     - path.basename(myPath)); // returns basename of path (filename at the end)
@@ -14,5 +17,15 @@ some functions
     - path.parse(myPath)); // returns object containing all path info
 
 
-
 OS Module
+- provides operating system-related utility methods and properties
+- Has CPU, network, OS, User related info
+
+some functions 
+    - os.platform() // platform name: win32 / darwin / linux/ freebsd
+    - os.release() //  os release version
+    - os.homedir() // homedirectory
+    - os.freemem() // free memory space in bytes
+    - os.networkInterfaces() // network interfaces that have been assigned a network address
+    - os.userInfo() // username,
+    - os.cpus() // each cpu core information
