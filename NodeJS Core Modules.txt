@@ -29,3 +29,26 @@ some functions
     - os.networkInterfaces() // network interfaces that have been assigned a network address
     - os.userInfo() // username,
     - os.cpus() // each cpu core information
+
+FS Modules
+
+NodeJS has a different data type called Buffer, which is a binary format of data.
+
+NOTE: Stream and Buffer in nodeJS are very important and complex concepts to understand.
+
+Every FS module functions have synchronous and asynchronous version.
+Ex- WriteFile() [asynchronous] and WriteFileSync() [synchronous]
+
+NodeJS is not supposed to manage IO operations using its main thread rather using its file system process. 
+WriteFileSync() is synchronous in nature so it would block the main thread.
+
+As for OS Module, the scenerio is opposite as there are no IO operations.
+
+NOTE: Try as much using asynchronous rather than synchronous approach.
+      Use only synchronous when you have no other option.
+
+All asynchronous callback functions of Node Packages follow the same pattern -
+    - there are two paramters - err and data. 
+    - One of them becomes null and other one becomes available
+    - 
+    ex -    fs.readFile('myFile.txt', ( err, data) => {})
