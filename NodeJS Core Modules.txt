@@ -108,3 +108,7 @@ Functions
     - http.createServer([options][, requestListener])   //creates a new instance of http.Server with listener on contructor
     - server.listen( PORT-NUMBER )   // Starts the HTTP server listening for connections. 
     - server.on( EVENT, CALLBACK[])   //listens for a 'connection' event
+
+When http.createServer() is defined, we can put the 'connection' listener function as callback, which takes 'req' and 'res' object.
+'req.url' property references to the request path.
+res.write() writes data to the response object to be served on the client.
