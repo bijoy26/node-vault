@@ -58,3 +58,25 @@ some functions
     - fs.appendFileSync( FILENAME, '\nHey ki obostha!!');   //sync
     - fs.writeFile( FILENAME, FILE-CONTENT, () => {});  //async
     - fs.readFile( FILENAME, (err, data2) => {});    // asynchronous read
+
+
+Events Module
+Most important module of nodeJS.
+It is one of the most important building blocks of 'event based runtime' nodeJS.
+
+'EventEmitter' Class : A builtin classs used to raise events. 
+
+The job of Event listeners is to wait for the events they registered to and to fire their functions when they events start broadcasting.
+
+All EventEmitters emit the event 'newListener' when new listeners are added and 'removeListener' when existing listeners are removed.
+
+emitter.on(eventName, listener)     //register new listener function to the end of the listeners array for the event named eventName. 
+emitter.emit(eventName[, ...args])  //Synchronously calls each of the listeners registered for the event named eventName
+
+NOTE : Listener functions need to registered before the events are emitted.
+Events can emit additional info in variable, object format.
+
+NOTE : The object that emits event, must be the same object with which listeners are registered with. 
+
+Also, events can be imported from external modules, by wrapping those events into a class that extends EventEmitter.
+Importing on the main script, instantiate an object of that module and set listeners to receive the data and additional params emitted by that module.
