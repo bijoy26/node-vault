@@ -80,3 +80,31 @@ NOTE : The object that emits event, must be the same object with which listeners
 
 Also, events can be imported from external modules, by wrapping those events into a class that extends EventEmitter.
 Importing on the main script, instantiate an object of that module and set listeners to receive the data and additional params emitted by that module.
+
+
+HTTP Module
+
+Usually for PHP Web application development, Apache server (WAMP, XAMP) is used to serve the pages. 
+The server is kept running and the codes are put under 'htdocs' folder.
+
+For nodeJS, server can be created inside application, which is powered on demand.
+
+HTTP Module is used to use the HTTP server and client.
+In order to support the full spectrum of possible HTTP applications, the Node.js HTTP API is very low-level.
+HTTP message headers are represented by an object like this -
+      
+        { 'content-length': '123',
+          'content-type': 'text/plain',
+          'connection': 'keep-alive',
+          'host': 'mysite.com',
+          'accept': '*/*' }
+
+http.Server object is an EventEmitter. 
+When the server is created and fixed on a port to listen, it starts the 'Event Loop' which continuous cycles through the same process.
+
+NOTE: When the server gets a new connection request, it fires a 'connection' event with a 'socket' object, which can be listened to.
+
+Functions 
+    - http.createServer([options][, requestListener])   //creates a new instance of http.Server
+    - server.listen( PORT-NUMBER )   // Starts the HTTP server listening for connections. 
+    - server.on()
