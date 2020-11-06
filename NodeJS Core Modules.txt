@@ -105,6 +105,6 @@ When the server is created and fixed on a port to listen, it starts the 'Event L
 NOTE: When the server gets a new connection request, it fires a 'connection' event with a 'socket' object, which can be listened to.
 
 Functions 
-    - http.createServer([options][, requestListener])   //creates a new instance of http.Server
+    - http.createServer([options][, requestListener])   //creates a new instance of http.Server with listener on contructor
     - server.listen( PORT-NUMBER )   // Starts the HTTP server listening for connections. 
-    - server.on()
+    - server.on( EVENT, CALLBACK[])   //listens for a 'connection' event
