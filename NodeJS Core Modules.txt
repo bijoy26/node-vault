@@ -52,3 +52,9 @@ All asynchronous callback functions of Node Packages follow the same pattern -
     - One of them becomes null and other one becomes available
     - 
     ex -    fs.readFile('myFile.txt', ( err, data) => {})
+
+some functions 
+    - fs.writeFileSync( FILENAME, 'Hello programmers!');    //sync
+    - fs.appendFileSync( FILENAME, '\nHey ki obostha!!');   //sync
+    - fs.writeFile( FILENAME, FILE-CONTENT, () => {});  //async
+    - fs.readFile( FILENAME, (err, data2) => {});    // asynchronous read
