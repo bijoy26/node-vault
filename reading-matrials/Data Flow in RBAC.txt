@@ -1,0 +1,10 @@
+The system would have 3 specific endpoints-
+    1. Authentication (AuthN) Server
+    2. Authorization (AuthZ) Server
+    3. Get-Resource
+
+When user interacts with the system first time -
+            1. AuthN crafts a JWT and sends back to client
+            2. Client calls Get-Resource() using the token
+            3. Get-Resource() returns client side resources list in json data.
+               Whether client is using Angular or React, it would load the front end and show/hide contents in dashboard 
