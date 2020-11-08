@@ -18,7 +18,7 @@ When user interacts with the system first time -
             5. Client calls Get-Products() API from business server
             6. Product Controller checks client JWT and upon validation-
                 
-                - Either sends back HTTP 401 response if user is not authenticated.
+                - Either sends back 'HTTP 401' response if user is not authenticated.
                 - Proceed to next step if user passes 401 validaiton.
 
             7. Upon receiving the client request, a middleware(nodeJS) or filter(dotNet) in business server calls Auth Server and sends the JWT and Get-Products() request.
@@ -29,9 +29,15 @@ When user interacts with the system first time -
                         - Either sends HTTP 403 (Forbidden) to client if unauthorized.
                           Even if someone hacks the JWT and sends the authentic copy of token and pass 401 validation, 
                           the middleware would make the request invalid by sending to auth server ( DB checks) and checking the response.
-                        - Else sends the request to Product Controller.                    
+
+                        - Else sends the request to Product Controller.
+
+           11. The specified API sends the response to the client.                    
 
 Tips:
+
 1. Do not hardcode Roles on API Controller (ex- "role:admin").
    If new roles need to be added, the entire system has to be redeployed again.
    Dynamically create roles and permissions when required.
+   
+2. On server, before letting access to an API, always use a middleware/filter/attribute to validate through auth server
