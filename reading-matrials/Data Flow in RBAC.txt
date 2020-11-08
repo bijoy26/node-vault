@@ -1,10 +1,37 @@
-The system would have 3 specific endpoints-
+Usually, a system has separate Auth Server and Business server.
+
+The system Auth server would have 3 specific endpoints-
     1. Authentication (AuthN) Server
     2. Authorization (AuthZ) Server
     3. Get-Resource
 
+System business server has -
+    1. Product Controller: Contains Get-Products() API
+
 When user interacts with the system first time -
-            1. AuthN crafts a JWT and sends back to client
+            
+            1. AuthN server crafts a JWT and sends back to client
             2. Client calls Get-Resource() using the token
             3. Get-Resource() returns client side resources list in json data.
-               Whether client is using Angular or React, it would load the front end and show/hide contents in dashboard 
+            4. Whether client is using Angular or React, it would load the UI and handle contents in dashboard. (show/hide/enable/disable validations)
+
+            5. Client calls Get-Products() API from business server
+            6. Product Controller checks client JWT and upon validation-
+                
+                - Either sends back HTTP 401 response if user is not authenticated.
+                - Proceed to next step if user passes 401 validaiton.
+
+            7. Upon receiving the client request, a middleware(nodeJS) or filter(dotNet) in business server calls Auth Server and sends the JWT and Get-Products() request.
+            8. Auth server looks at the user role nad permission table 
+            9. Based on WHO (token) asking for WHAT using which permission (db query), Auth Server returns either true or false to business server.
+           10. Based on the response, Business server -
+                    
+                        - Either sends HTTP 403 (Forbidden) to client if unauthorized.
+                          Even if someone hacks the JWT and sends the authentic copy of token and pass 401 validation, 
+                          the middleware would make the request invalid by sending to auth server ( DB checks) and checking the response.
+                        - Else sends the request to Product Controller.                    
+
+Tips:
+1. Do not hardcode Roles on API Controller (ex- "role:admin").
+   If new roles need to be added, the entire system has to be redeployed again.
+   Dynamically create roles and permissions when required.
