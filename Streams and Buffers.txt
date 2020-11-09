@@ -1,0 +1,7 @@
+Stream means flow of data.
+Example - 
+- Live data streaming as used in video platforms (YouTube)
+- Text data streaming
+
+Data streaming is a process.
+Stream is a collection of Buffers.
