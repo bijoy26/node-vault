@@ -14,7 +14,6 @@ When user interacts with the system first time -
             2. Client calls Get-Resource() using the token
             3. Get-Resource() returns client side resources list in json data.
             4. Whether client is using Angular or React, it would load the UI and handle contents in dashboard. (show/hide/enable/disable validations)
-
             5. Client calls Get-Products() API from business server
             6. Product Controller checks client JWT and upon validation-
                 
