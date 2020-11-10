@@ -8,7 +8,7 @@ Resource - Depending on the system/ application resource can be
 'Permission mapping' allows the specific roles to access specific resources.
 Ex - 
 	- 'salesman' role can get permission to access 'sell page' route ( by the property "isAllowed: True")
-	- 'salesman' role can get permission to access 'customerDetail Page' route but no edit ( by the property "isAllowed: True" & IsEnabled: False)
+	- 'salesman' role can get permission to access 'customerDetail Page' route without edit access ( by the property "isAllowed: True" & "IsEnabled: False")
 	- 'salesman' role won't get permission to access 'salesReportController' API ( "isAllowed: No")	// GET request check for viewing sales report
 	- 'salesman' role ('user:foyzul') can get permission to access 'salesReportController' API ( "isAllowed: True")		// Dynamic override for special scenerios
 
