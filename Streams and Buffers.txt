@@ -5,3 +5,48 @@ Example -
 
 Data streaming is a process.
 Stream is a collection of Buffers.
+
+Buffer is kind of like a data type (string / boolean) which is actually an encapsulated packet. 
+
+Buffering: Waiting for buffers to load as stream sequence 
+
+Incoming response(video/text data) coming from Node server is divided into parts.
+The small broken parts are raw binary data, which can't be used directly.
+But when a few number of packets consist a Buffer object, and that can be used or manipulated. 
+
+Buffer can be of two types -
+                    - ReadStream (like youtube buffering)
+                    - WriteStream
+
+Read Stream 
+A specified amount of small parts constitutes a buffer and that is transmitted to the client.
+
+NOTE: readFileSync() does not read via stream flow, createReadStream() does.
+
+fs.createReadStream(path[, options])    // creates Read Stream for a file and sends buffer which can be listened to using events.
+fs.createWriteStream(path[, options])    // creates Write Stream object and sends buffer to write to the specified file
+
+
+Like Read Stream, nodeJS can receive incoming requests in chunks.
+Client can POST data in a server route via form field and another route can receive the data in buffer stream format.
+As the data would get transferred chunk by chunk, it is clear that the entire data won't be accessible as a whole on the request.
+
+req and res parameters in CreateHTTPServer() are accordingly readable and writable streams.
+So req.on() listener for 'data' and 'end' event is valid.
+Similarly, res can be fed stream data before sending.
+
+req.on('data', CALLBACK)    //set listener for buffer stream via 'data' event
+req.on('end', CALLBACK)    //set listener for end of finished streaming via 'end' event
+
+Buffer Object - Stores the Raw data, similar to an array of integers but corresponds to a raw memory allocation outside the Chrome V8 heap.
+
+Buffer.contact( ARRAY / LIST)  // Returns a buffer object which is the result of concatenating all the buffers in the parameter array/list together
+
+readableStream.pipe( WRITE-STREAM )   // attaches a 'Writable stream' to the 'readable', causing it to switch automatically into flowing mode and push all of read stream's data to the attached Writable.
+
+Here myReadStream.pipe( myWriteStream ) does the same job as -
+
+        myReadStream.on('data', (chunk) => {
+            ourWriteStream.write(chunk); 
+        });
+
