@@ -1,7 +1,7 @@
 Stream means flow of data.
-Example - 
-- Live data streaming as used in video platforms (YouTube)
-- Text data streaming
+    Example - 
+        - Live data streaming as used in video platforms (YouTube)
+        - Text data streaming
 
 Data streaming is a process.
 Stream is a collection of Buffers.
@@ -19,7 +19,7 @@ Buffer can be of two types -
                     - WriteStream
 
 Read Stream 
-A specified amount of small parts constitutes a buffer and that is transmitted to the client.
+A specified amount of small parts constitutes a buffer and the stream of buffer is transmitted to the client.
 
 NOTE: readFileSync() does not read via stream flow, createReadStream() does.
 
@@ -28,19 +28,24 @@ fs.createWriteStream(path[, options])    // creates Write Stream object and send
 
 
 Like Read Stream, nodeJS can receive incoming requests in chunks.
-Client can POST data in a server route via form field and another route can receive the data in buffer stream format.
+
+Client can POST data in a server route via form field to another route which can receive the data in buffer stream format.
 As the data would get transferred chunk by chunk, it is clear that the entire data won't be accessible as a whole on the request.
 
 req and res parameters in CreateHTTPServer() are accordingly readable and writable streams.
+   
+    - 'data' event is emitted when new buffer is received
+    - 'end' event is emitted when all buffer streams have been received 
+
 So req.on() listener for 'data' and 'end' event is valid.
 Similarly, res can be fed stream data before sending.
 
-req.on('data', CALLBACK)    //set listener for buffer stream via 'data' event
-req.on('end', CALLBACK)    //set listener for end of finished streaming via 'end' event
+    req.on('data', CALLBACK)    //set listener for buffer stream via 'data' event
+    req.on('end', CALLBACK)    //set listener for end of finished streaming via 'end' event
 
 Buffer Object - Stores the Raw data, similar to an array of integers but corresponds to a raw memory allocation outside the Chrome V8 heap.
 
-Buffer.contact( ARRAY / LIST)  // Returns a buffer object which is the result of concatenating all the buffers in the parameter array/list together
+Buffer.concat( ARRAY / LIST)  // Returns a buffer object which is the result of concatenating all the buffers in the parameter array/list together
 
 readableStream.pipe( WRITE-STREAM )   // attaches a 'Writable stream' to the 'readable', causing it to switch automatically into flowing mode and push all of read stream's data to the attached Writable.
 
