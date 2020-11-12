@@ -1,0 +1,35 @@
+Structure of a simple Node Application
+
+Primary JS File - The single script that starts the node application. (via '$ node app.js')
+Filename usually it index.js or app.js.
+
+NOTE: NodeJS by default recognizes .js extension so it can be omitted in paths.
+      The path 'Something/quotes' would import the 'quotes.js' script inside that folder by default
+      (or index.js if present), no matter how deeper it is or how many same file names with different
+      extensions are there.
+
+NOTE: Always assign function parameters locally into function scope as best practise.
+    Ex- 
+        funciton hello( min , max) {
+            let minimum = min;
+            let maximum = max;
+        }
+
+General Structure
+1. Comments
+2. Dependencies (require() packages and modules)
+3. Module scaffolding object (app object) : A blueprint of the application 
+4. Configuration : Some configuration variables, secret keys, connection strings 
+5. Function definitions: Required logical functions for the app
+6. Function Invokation: Call the primary indefinite loop function
+
+Standard practise is to create a blank scaffolding object in a script and always export that object.
+Whatever needs to be exported, just push it into that scaffolding object as a property.
+
+const abog = "hello:world:so:nice";
+abog.split(':') // returns an array of strings delimetered by colon
+
+abog.split(/\n?\r/) // regular expression can be passed under JS split() method.
+
+NOTE: When a nodeJS server is created and it starts listening, the indefinite loops runs continuously and keeps EVENT LOOP busy, so the server keeps running.
+So, in nodeJS, the APPLICATION is controlling the server.
