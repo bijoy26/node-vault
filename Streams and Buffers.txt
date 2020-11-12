@@ -15,11 +15,12 @@ The small broken parts are raw binary data, which can't be used directly.
 But when a few number of packets consist a Buffer object, and that can be used or manipulated. 
 
 Buffer can be of two types -
-                    - ReadStream (like youtube buffering)
-                    - WriteStream
+
+               1. ReadStream (like youtube buffering)
+               2. WriteStream
 
 Read Stream 
-A specified amount of small parts constitutes a buffer and the stream of buffer is transmitted to the client.
+A specified amount of small parts constitutes a buffer and the stream of buffer is then transmitted to the client.
 
 NOTE: readFileSync() does not read via stream flow, createReadStream() does.
 
@@ -29,7 +30,7 @@ fs.createWriteStream(path[, options])    // creates Write Stream object and send
 
 Like Read Stream, nodeJS can receive incoming requests in chunks.
 
-Client can POST data in a server route via form field to another route which can receive the data in buffer stream format.
+In a server route, client can POST data  via form field to another route which can receive the data in buffer stream format.
 As the data would get transferred chunk by chunk, it is clear that the entire data won't be accessible as a whole on the request.
 
 req and res parameters in CreateHTTPServer() are accordingly readable and writable streams.
@@ -40,7 +41,7 @@ req and res parameters in CreateHTTPServer() are accordingly readable and writab
 So req.on() listener for 'data' and 'end' event is valid.
 Similarly, res can be fed stream data before sending.
 
-    req.on('data', CALLBACK)    //set listener for buffer stream via 'data' event
+    req.on('data', CALLBACK)    //set listener for incoming individual buffer via 'data' event
     req.on('end', CALLBACK)    //set listener for end of finished streaming via 'end' event
 
 Buffer Object - Stores the Raw data, similar to an array of integers but corresponds to a raw memory allocation outside the Chrome V8 heap.
@@ -52,6 +53,6 @@ readableStream.pipe( WRITE-STREAM )   // attaches a 'Writable stream' to the 're
 Here myReadStream.pipe( myWriteStream ) does the same job as -
 
         myReadStream.on('data', (chunk) => {
-            ourWriteStream.write(chunk); 
+            myWriteStream.write(chunk); 
         });
 
